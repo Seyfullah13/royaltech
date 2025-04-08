@@ -1,0 +1,35 @@
+{# templates/admin/listedes_commandes/show.html.twig #}
+
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <h1>Détails de la commande</h1>
+
+    <table>
+        <tr>
+            <th>ID Commande</th>
+            <td>{{ entity.Id_comm }}</td>
+        </tr>
+        <tr>
+            <th>Client</th>
+            <td>{{ entity.Civilite }} {{ entity.Nom }} {{ entity.Prenom }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ entity.Adresse }}, {{ entity.Ville }}</td>
+        </tr>
+        <!-- Ajoutez d'autres champs selon vos besoins -->
+        <tr>
+            <th>Facture</th>
+            <td>
+                {% if entity.Id_comm is not empty %}
+                    <a href="{{ path('generate_invoice', {'id': entity.Id_comm}) }}" class="btn btn-primary">Télécharger la Facture</a>
+                {% else %}
+                    Pas de facture disponible
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+    <a href="{{ path('easyadmin', { entity: 'listedescommandes' }) }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

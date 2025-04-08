@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .register-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .register-logo {
+        display: block;
+        margin: 0 auto 20px;
+        width: 150px;
+    }
+    .btn {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="register-container">
+        <img src="{{ asset('logo_societe.png') }}" alt="Logo" class="register-logo">
+
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+
+        {{ form_start(registrationForm) }}
+            <div class="form-group">
+                {{ form_label(registrationForm.username) }}
+                {{ form_widget(registrationForm.username, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_errors(registrationForm.username) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(registrationForm.plainPassword) }}
+                {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control'} }) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-control2'} }) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Register</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css">
+{% endblock %}
