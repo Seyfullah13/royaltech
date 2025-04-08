@@ -9,9 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
 class NonCommandes
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: 'AUTO')] // Utilisation de la stratégie auto
-    #[ORM\Column(type: 'integer')] // Définition de la colonne comme type entier
-    private ?int $id = null; // Le type de $id doit être int
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?string $id = null;
+
 
     #[ORM\Column(length: 50)]
     private ?string $designation = null;
@@ -22,12 +23,12 @@ class NonCommandes
     #[ORM\Column(length: 50)]
     private ?string $categorie = null;
 
-    public function getId(): ?int // Retourne un int pour l'ID
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId(int $id): static // Si tu veux définir l'ID manuellement, mais ce n'est pas courant pour un auto-incrément
+    public function setId(string $id): static
     {
         $this->id = $id;
 
